@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reza Pradana Rahman | Portofolio</title>
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e3f2fd, #ffffff);
+      color: #222;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.6);
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      padding: 15px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    nav a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1em;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      bottom: -4px;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #0096c7;
+      transform: scale(1.05);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8, #48cae4);
+      color: white;
+      text-align: center;
+      padding: 120px 20px 100px;
+      background-attachment: fixed;
+      background-size: cover;
+      animation: fadeDown 1.2s ease-out forwards;
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 3em;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #dff6ff;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      max-width: 950px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      margin: 80px auto;
+      padding: 50px;
+      border-radius: 25px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .section.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    h2 {
+      color: #0077b6;
+      border-left: 6px solid #00b4d8;
+      padding-left: 12px;
+      font-size: 1.9em;
+      margin-bottom: 25px;
+    }
+
+    /* ===== PROFIL ===== */
+    #profile {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 5px solid #00b4d8;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 183, 255, 0.3);
+      transition: all 0.6s ease;
+    }
+
+    .profile-photo:hover {
+      transform: rotateY(15deg) scale(1.1);
+      box-shadow: 0 20px 40px rgba(0, 183, 255, 0.4);
+    }
+
+    #profile p {
+      font-size: 1.05em;
+      text-align: justify;
+    }
+
+    /* ===== PROYEK ===== */
+    .project {
+      background: linear-gradient(135deg, #f9fcff, #e8f8ff);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 119, 182, 0.1);
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      background: #e0f7ff;
+      box-shadow: 0 15px 30px rgba(0, 119, 182, 0.25);
+    }
+
+    .project h3 {
+      margin-bottom: 8px;
+      color: #005f8d;
+    }
+
+    .project-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 15px;
+      margin-right: 10px;
+      object-fit: cover;
+      border: 3px solid #00b4d8;
+      transition: 0.4s;
+    }
+
+    .project-photo:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== SOSIAL LINK ===== */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0 30px;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #f0fbff, #e6faff);
+      border: 2px solid #00b4d8;
+      border-radius: 12px;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: 600;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 183, 255, 0.15);
+    }
+
+    .social-item:hover {
+      transform: scale(1.05);
+      background: #dff8ff;
+      box-shadow: 0 8px 18px rgba(0, 183, 255, 0.25);
+    }
+
+    .social-item img {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+    }
+
+    /* ===== FORM KONTAK ===== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s;
+      outline: none;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0077b6;
+      box-shadow: 0 0 8px rgba(0, 119, 182, 0.3);
+      background: white;
+    }
+
+    button {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #005f8d, #0096c7);
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    button img {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      background: #1e1e1e;
+      color: #ccc;
+      padding: 40px 15px;
+      font-size: 0.95em;
+    }
+
+    footer a {
+      color: #00b4d8;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #48cae4;
+      text-decoration: underline;
+    }
+
+    /* ===== BACK TO TOP BUTTON ===== */
+    #toTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      display: none;
+      transition: 0.4s;
+    }
+
+    #toTop:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, #005f8d, #00a6d6);
+    }
+
+    /* ===== ANIMASI ===== */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { gap: 15px; font-size: 0.9em; }
+      header h1 { font-size: 2.3em; }
+      .section { padding: 25px; }
+      #profile { flex-direction: column; text-align: center; }
+      .project-photo { width: 100%; height: auto; margin-top: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#profile">Profil</a>
+    <a href="#pendidikan">Pendidikan</a>
+    <a href="#proyek">Proyek</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <header>
+    <h1>Reza Pradana Rahman</h1>
+    <p>Mahasiswa Teknik Informatika & Komputer | Universitas Negeri Makassar</p>
+  </header>
+
+  <section id="profile" class="section">
+    <img src="reza1.jpg" alt="Foto Reza Pradana Rahman" class="profile-photo" />
+    <div>
+      <h2>Tentang Saya</h2>
+      <p>Halo! Saya Reza Pradana Rahman, seorang mahasiswa dengan minat besar di bidang teknologi, pemrograman, dan desain web. Saya mempelajari HTML, CSS, JavaScript, C++, dan Python untuk mengasah logika serta membangun aplikasi yang bermanfaat bagi banyak orang.</p>
+      <p><strong>Lokasi:</strong> Makassar, Sulawesi Selatan</p>
+    </div>
+  </section>
+
+  <section id="pendidikan" class="section">
+    <h2>Pendidikan</h2>
+    <ul>
+      <li><strong>SMK Negeri 4 Selayar</strong> — Teknik Komputer dan Jaringan (2022–2025)</li>
+      <li><strong>Universitas Negeri Makassar</strong> — Teknik Informatika dan Komputer (2025–Sekarang)</li>
+    </ul>
+  </section>
+
+  <section id="proyek" class="section">
+    <h2>Proyek</h2>
+    <div class="project">
+      <h3>Website Portofolio Pribadi</h3>
+      <p><strong>Deskripsi:</strong> Website responsif untuk menampilkan profil dan karya pribadi.</p>
+      <p><strong>Teknologi:</strong> HTML, CSS</p>
+    </div>
+
+    <div class="project">
+      <h3>Sistem Kontrol Lampu Otomatis</h3>
+      <p><strong>Deskripsi:</strong> Proyek Arduino untuk mengontrol lampu berdasarkan intensitas cahaya.</p>
+      <p><strong>Teknologi:</strong> C++, Arduino</p>
+      <img src="gambar1.jpg" alt="Proyek Lampu" class="project-photo" />
+      <img src="gambar2.jpg" alt="Proyek Lampu 2" class="project-photo" />
+    </div>
+  </section>
+
+  <section id="kontak" class="section">
+    <h2>Kontak</h2>
+    <p><strong>Hubungi atau ikuti saya melalui:</strong></p>
+
+    <div class="social-links">
+      <a href="https://wa.me/6285133827424" target="_blank" class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+        <span>Chat via WhatsApp</span>
+      </a>
+
+      <a href="https://instagram.com/rezaprdn__" target="_blank" class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+        <span>Follow @rezaprdn__</span>
+      </a>
+    </div>
+
+    <form onsubmit="return bukaWhatsApp(event)">
+      <input type="text" id="nama" placeholder="Nama Anda" required />
+      <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+      <button type="submit">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" />
+        Kirim via WhatsApp
+      </button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Reza Pradana Rahman. Semua Hak Dilindungi.</p>
+    <p><a href="https://rezaprdn.vercel.app">rezaprdn.vercel.app</a></p>
+  </footer>
+
+  <button id="toTop" title="Kembali ke atas">↑</button>
+
+  <script>
+    // Scroll reveal
+    const sections = document.querySelectorAll(".section");
+    const revealOnScroll = () => {
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // Back to top
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // WhatsApp form
+    function bukaWhatsApp(event) {
+      event.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const pesan = document.getElementById("pesan").value;
+      const nomor = "6285133827424";
+      const url = `https://wa.me/${nomor}?text=Halo,%20saya%20${encodeURIComponent(nama)}.%0A%0A${encodeURIComponent(pesan)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
